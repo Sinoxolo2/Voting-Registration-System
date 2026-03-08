@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <img src="images/polling.jpg" alt="Polling Logo" class="logo">
+    
+    <div class="background-container">
+        <div class="overlay"></div>
+        <div class="confirmation-content">
+            <p id="message"></p>
+            <button id="retryButton" style="display: none;" onclick="window.location.href='registration.html'">Retry</button>
+            <button onclick="window.location.href='home.html'">Return Home</button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+    
+        const success = localStorage.getItem('registrationSuccess');
+        if (success === 'true') {
+            document.getElementById('message').textContent = 'Your registration is successful!';
+            localStorage.removeItem('registrationSuccess');
+        } else {
+            document.getElementById('message').textContent = 'Registration failed. Please retry.';
+            document.getElementById('retryButton').style.display = 'inline';
+        }
+    </script>
+</body>
+</html>
